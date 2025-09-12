@@ -1,11 +1,11 @@
 Package: MATH4753F25johnson
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Lab code 2025
 Version: 0.1.0
 Authors@R: c(
     person(
-      "Jane", "Doe",
-      email = "jane@example.com",
+      "Mason", "Johnson",
+      email = "mason.c.johnson-1@ou.edu",
       role = c("aut", "cre")
     )
   )
