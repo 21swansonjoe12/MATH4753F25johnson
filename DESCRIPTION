@@ -16,3 +16,4 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/21swansonjoe12/MATH4753F25johnson
 BugReports: https://github.com/21swansonjoe12/MATH4753F25johnson/issues
+RoxygenNote: 7.3.2
