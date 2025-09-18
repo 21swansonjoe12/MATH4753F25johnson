@@ -9,8 +9,7 @@ Authors@R: c(
       role = c("aut", "cre")
     )
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
+Description: For MATH4753F25 functions
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
