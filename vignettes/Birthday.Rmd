@@ -1,0 +1,105 @@
+---
+title: "Birthday"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Birthday}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MATH4753F25johnson)
+```
+
+## Birthday Problem Derivation
+
+Let $A$ be the event where 2 or more people have the same birthday and $\bar{A}$ be the event that every person has a different birthday. $k$ is the number of people. By definition,
+
+$$
+  P(A) + P(\bar{A}) = 1
+$$
+
+Rearranging, we get
+
+$$
+  P(A) = 1 - P(\bar{A})
+$$
+
+The probability that every person has a different birthday is
+
+$$
+  P(\bar{A}) = \frac{365}{365}*\frac{364}{365}*...*\frac{365-k+1}{365} = \frac{365 * 364 * ... * (365-k+1)}{365^k}
+$$
+
+Now we'll plug that back into our first equation to get
+
+$$
+  P(A) = 1 - \frac{365 * 364 * ... * (365-k+1)}{365^k}
+$$
+
+## Reformulation
+
+Although we do know the probability of 2 or more people having the same birthday, we can't use it easily using R code. We will reformulate it so we can then use it.
+
+First, let's make use of the idea that the top part of the fraction of $P(\bar{A})$ can be represented as a number of permutations. The definition of the number of permutations is
+
+$$
+  ^nP_r = \frac{n!}{(n-r)!}
+$$
+
+All that this formula does is multiply all the digits of $n!$ greater than $r$. Now let's look back at $P(\bar{A})$.
+
+$$
+  365 * 364 * ... * (365-k+1) = \frac{365*364*...*(365-k+1)*(365-k)!}{(365-k)!} = \frac{365!}{(365-k)!} = {^{365}P_k}
+$$
+
+By multiplying both the top and bottom by $(365-k)!$, we get the exact form we need. We will also use the following relation:
+
+$$
+  {^{365}P_k}=k!{^{365}C_k}
+$$
+
+Let's start with $P(\bar{A})$.
+
+$$
+  P(\bar{A}) = \frac{^{365}P_k}{365^k}
+$$
+
+We can then take the natural logarithm of both sides
+
+$$
+  \log(P(\bar{A})) = \log\left(\frac{^{365}P_k}{365^k}\right) = \log(^{365}P_k) - \log(365^k) = \log(k!{^{365}C_k})-k\log(365) = \log(k!) + \log({^{365}C_k})-k\log(365)
+$$
+
+From here, there are R functions for each of these: `lchoose()` and `lfactorial()`, the `l` standing for logarithm. To get $P(\bar{A})$, we just need to exponentiate both sides. From there, we get
+
+$$
+  P(A) = 1 - e^{\log(k!) + \log({^{365}C_k})-k\log(365)}
+$$
+
+which in R is `1 - exp(lfactorial(k) + lchoose(365,k) - k*log(365))`.
+
+## The body of the function
+
+Now that we've derived the probability and put it into a form we can program with R, we can put it into a function. Below is the body of the `birthday()` function
+
+```{r, eval=FALSE}
+birthday <- function(x) {
+  1 - exp(lchoose(365,x) + lfactorial(x) - x*log(365))
+}
+```
+
+## Example
+
+Here is the probability that 2 or more people share the same birthday from samples of 20 to 25 people
+
+```{r}
+birthday(x = 20:25)
+```
