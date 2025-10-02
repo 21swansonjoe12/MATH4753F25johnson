@@ -2,6 +2,7 @@
 
 export(birthday)
 export(myfirstfunction)
+export(mysample)
 export(mysum)
 export(scatterhist)
 importFrom(graphics,barplot)
