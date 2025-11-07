@@ -3,6 +3,7 @@
 #' @param n An integer
 #' @param iter An integer
 #' @param time An integer
+#' @importFrom grDevices rainbow
 #'
 #' @returns A boxplot for each iteration
 #' @export
