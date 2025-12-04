@@ -1,0 +1,62 @@
+---
+title: "What this package does"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{What this package does}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MATH4753F25johnson)
+```
+
+# Introduction
+
+This package was made for the course MATH 4753 at the University of Oklahoma. Its contents include various functions, apps and data sets that have been created and used throughout the course. Below, you will find several functions that can be used with this package.
+
+# Functions
+
+## myfirstfunction()
+
+This is the first function that has been added to the package. Its use case is simple. All it does is take a list of x values and output the square of each, plotting them also.
+
+```{r}
+myfirstfunction(1:10)
+```
+
+## mysum()
+
+This function doesn't do anything but output what the function `summary()` outputs. This function was made strictly to get a feel for how functions are made and added to a package.
+
+```{r}
+mysum(1:10)
+```
+
+## scatterhist()
+
+This function creates a scatter plot with marginal histograms for each parameter. 
+
+```{r}
+scatterhist(ddt$LENGTH, ddt$WEIGHT)
+```
+
+## mysample()
+
+This function creates `iter` samples of size `n`, randomly selecting from values 1 through 10 of equal probability. The function outputs a bar chart showing the distribution.
+
+```{r}
+mysample(10000)
+```
+
+# Notes
+
+There are several more functions in this package that are not listed here. Each function is documented using roxygen, so they are not without documentation. This vignette is meant to give an introduction into the package and go over several functions as examples.
+
