@@ -56,7 +56,44 @@ This function creates `iter` samples of size `n`, randomly selecting from values
 mysample(10000)
 ```
 
-# Notes
+## myncurve()
 
-There are several more functions in this package that are not listed here. Each function is documented using roxygen, so they are not without documentation. This vignette is meant to give an introduction into the package and go over several functions as examples.
+This function takes a normal distribution and a given lower tail. It returns a plot of the distribution and lower tail with its probability, and also returns the input values.
+
+```{r}
+myncurve(0,1,1)
+```
+
+## ntickets()
+
+This function comes from the overbooking problem. This function serves as a solution to the problem for most given values.
+**NOTE**: This function has been tested for most extreme input values *except* for gamma. When I created this function, I forgot to account for changes in gamma; however, this function should work well for non-extreme values of gamma.
+
+```{r, fig.height=8,fig.width=8}
+ntickets(200, 0.02, 0.95)
+```
+
+## mycltu()
+
+This function is used to show the central limit theorem by taking `iter` samples of size `n`. The output gives a plot that shows the expected density function and the actual density curve, as well as a histogram of the density. There is also a black line to indicate the uniform density plot.
+
+```{r}
+mycltu(20,10000)
+```
+
+## myboot2()
+
+This function is for bootstrapping a random sample to make many more random samples. It outputs the confidence interval, the x statistic, and some input values. It also plots the data.
+
+```{r}
+myboot2(x = rnorm(30,8,10))
+```
+
+## shinymle()
+
+This is the last function presented in this package. This function was created by ChatGPT. It uses a shiny app for the Maximum Likelihood Estimate (MLE). An example is not displayed as the app cannot be opened, but you can run the function yourself to see what it does.
+
+```{r,eval=FALSE}
+shinymle()
+```
 
