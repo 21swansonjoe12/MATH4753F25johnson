@@ -91,9 +91,16 @@ myboot2(x = rnorm(30,8,10))
 
 ## shinymle()
 
-This is the last function presented in this package. This function was created by ChatGPT. It uses a shiny app for the Maximum Likelihood Estimate (MLE). An example is not displayed as the app cannot be opened, but you can run the function yourself to see what it does.
+This function was created by ChatGPT. It uses a shiny app for the Maximum Likelihood Estimate (MLE). An example is not displayed as the app cannot be opened, but you can run the function yourself to see what it does.
 
 ```{r,eval=FALSE}
 shinymle()
 ```
 
+## mymaxlik()
+
+This function finds the maximum likelihood estimates for a normal distribution. It utilizes the Newton-Raphson algorithm.
+
+```{r}
+mymlnorm(x=c(5,7,7,8,10),mu=seq(5,10,length=1000),sig=seq(0.1,4,length=1000),lwd=2,labcex=1)
+```
